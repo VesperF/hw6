@@ -16,7 +16,7 @@
 // prepend with `https://image.tmdb.org/t/p/w500/` to get the 
 // complete image URL
 
-let db = firebase.firestore()
+  let db=firebase.firestore()
 
 window.addEventListener('DOMContentLoaded', async function(event) {
   // Step 1: Construct a URL to get movies playing now from TMDB, fetch
@@ -94,8 +94,7 @@ window.addEventListener('DOMContentLoaded', async function(event) {
   //   to remove the class if the element already contains it.
   // ⬇️ ⬇️ ⬇️
 
-  document.querySelector(`.movies-${movieId}.watched-button`)
-  .addEventListener('click', async function(event) {
+  document.querySelector(`.movies-${movieId}.watched-button`).addEventListener('click', async function(event) {
     event.preventDefault
     document.querySelector(`.movies-${movieId}`).classList.add('opacity-20')
     
