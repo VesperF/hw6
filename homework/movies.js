@@ -7,11 +7,6 @@
 
 //API Key (v3 auth)
 // ff5f3a57921cf6d0c3ff829d95ae2cf6
-// Example API Request
-// https://api.themoviedb.org/3/movie/550?api_key=ff5f3a57921cf6d0c3ff829d95ae2cf6
-// API Read Access Token (v4 auth)
-// eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZjVmM2E1NzkyMWNmNmQwYzNmZjgyOWQ5NWFlMmNmNiIsInN1YiI6IjYwMmUxMGQxYTkxMTdmMDA0Y2Y1OTgyYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.AuJciFZSckHhxWq1XfOuD0rT48tTBzZqIIFcmDvNbMs
-
 
 
 // For this exercise, we'll be using the "now playing" API endpoint
@@ -21,12 +16,24 @@
 // prepend with `https://image.tmdb.org/t/p/w500/` to get the 
 // complete image URL
 
+
 window.addEventListener('DOMContentLoaded', async function(event) {
   // Step 1: Construct a URL to get movies playing now from TMDB, fetch
   // data and put the Array of movie Objects in a variable called
   // movies. Write the contents of this array to the JavaScript
   // console to ensure you've got good data
   // ⬇️ ⬇️ ⬇️
+
+  let url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=ff5f3a57921cf6d0c3ff829d95ae2cf6&language=en-US'
+  let response = await fetch(url)
+  let json = await response.json()
+  let movies = json.results
+
+  console.log(movies)
+
+  let db = firebase.firestore()
+
+
 
   // ⬆️ ⬆️ ⬆️ 
   // End Step 1
@@ -43,6 +50,9 @@ window.addEventListener('DOMContentLoaded', async function(event) {
   //   <a href="#" class="watched-button block text-center text-white bg-green-500 mt-4 px-4 py-2 rounded">I've watched this!</a>
   // </div>
   // ⬇️ ⬇️ ⬇️
+
+  let moviesWatched = await db.collection('watch').get()
+  let 
 
   // ⬆️ ⬆️ ⬆️ 
   // End Step 2
